@@ -7,13 +7,12 @@ export default class DogForm extends Component {
     this.state = {
       name: "",
       weight: "",
-      food: "",
-    }
+      bagWeight: "",
+    };
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
-
     this.setState({[name]: value});
   }
 
@@ -30,29 +29,26 @@ handleOnSubmit = (event) => {
           <form onSubmit={(event) => this.handleOnSubmit(event)} >
             <label htmlFor="name">Puppy Name</label>
             <input
+              value={this.state.name}
               type="text"
               name="name"
-              value={this.state.name}
-              onChange={(event) => this.handleChange(event)}
-            />
+              onChange={(event) => this.handleChange(event)} />
             <br />
             <br />
             <label htmlFor="weight">Puppy Weight</label>
             <input
+              value={this.state.weight}
               type="text"
               name="weight"
-              value={this.state.weight}
-              onChange={(event) => this.handleChange(event)}
-            />
+              onChange={(event) => this.handleChange(event)} />
             <br />
             <br />
-            <label htmlFor="food">Food Weight</label>
+            <label htmlFor="bagWeight">Dog Food Bag Weight</label>
             <input
+              value={this.state.bagWeight}
               type="text"
-              name="food"
-              value={this.state.food}
-              onChange={(event) => this.handleChange(event)}
-            />
+              name="bagWeight"
+              onChange={(event) => this.handleChange(event)} />
             <br />
             <br />
             <input type="submit" />
