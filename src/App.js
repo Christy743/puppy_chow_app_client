@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import DogFood from './components/DogFood';
-import DogFoodService from './services/DogFoodService';
 import './App.css';
+import DogFood from './components/DogFood';
 
 class App extends Component {
   render() {
