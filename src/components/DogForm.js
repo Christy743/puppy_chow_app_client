@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import Calendar from 'react-calendar';
 
 // Name, Weight
 
 export default class DogForm extends Component {
+
+  state = {
+    date: new Date(),
+  }
+
+  onChange = date => this.setState({ date })
+
   render() {
     return (
       <div>
@@ -20,12 +28,15 @@ export default class DogForm extends Component {
             <input type="number" name="foodWeight" />
             <br />
             <br />
-            <label for="datepicker">Purchased</label>
-            <input type="datepicker" name="datepicker" />
-            <br />
-            <br />
             <input type="submit" />
           </form>
+
+          <div>
+            <Calendar
+              onChange={this.onChange}
+              value={this.state.date}
+            />
+          </div>
       </div>
     );
   }
