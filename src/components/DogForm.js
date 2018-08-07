@@ -6,30 +6,53 @@ export default class DogForm extends Component {
 
     this.state = {
       name: "",
+      weight: "",
+      food: "",
     }
   }
 
   handleChange = (event) => {
-    debugger;
+    const { name, value } = event.target;
+
+    this.setState({[name]: value});
   }
+
+handleOnSubmit = (event) => {
+  event.preventDefault();
+  this.props.onSubmit(this.state);
+  this.setState(this.initialState);
+}
 
   render() {
     return (
       <div>
         <h2>Dog Form</h2>
-          <form>
+          <form onSubmit={(event) => this.handleOnSubmit(event)} >
             <label htmlFor="name">Puppy Name</label>
-            <input type="text"
-                   name="name"
-                   onChange={(event) => this.handleChange(event)} />
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={(event) => this.handleChange(event)}
+            />
             <br />
             <br />
             <label htmlFor="weight">Puppy Weight</label>
-            <input type="number" name="weight" />
+            <input
+              type="text"
+              name="weight"
+              value={this.state.weight}
+              onChange={(event) => this.handleChange(event)}
+            />
             <br />
             <br />
             <label htmlFor="food">Food Weight</label>
-            <input type="number" name="food" />
+            <input
+              type="text"
+              name="food"
+              value={this.state.food}
+              onChange={(event) => this.handleChange(event)}
+            />
             <br />
             <br />
             <input type="submit" />
