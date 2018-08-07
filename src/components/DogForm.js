@@ -2,17 +2,33 @@ import React, { Component } from 'react';
 
 export default class DogForm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = {
+    this.initialState = {
+      id: null,
       name: "",
       weight: "",
       bagWeight: "",
     };
+    this.state = this.initialState;
+  }
+
+  ComponentWillReceiveProps(nextProps) {
+    const { id, name, weight, bagWeight } = nextProps.dog;
+
+    if(id && this.props.editing !== nextProps.editing) {
+      this.setState({
+        id: id,
+        name: name,
+        weight: weight,
+        bagWeight: bagWeight,
+      });
+    }
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
+
     this.setState({[name]: value});
   }
 
