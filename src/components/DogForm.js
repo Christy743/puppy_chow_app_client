@@ -32,11 +32,11 @@ export default class DogForm extends Component {
     this.setState({[name]: value});
   }
 
-handleOnSubmit = (event) => {
-  event.preventDefault();
-  this.props.onSubmit(this.state);
-  this.setState(this.initialState);
-}
+  handleOnSubmit = (event) => {
+    event.preventDefault();
+    this.props.onSubmit(this.state);
+    this.setState(this.initialState);
+  }
 
   render() {
     return (
