@@ -14,15 +14,15 @@ export default class DogFood extends Component {
     }
   }
 
-  componentWillMount = () => {
-    this.setState({
-      dogs: [
-        ...this.state.dogs,
-        {id: uuidV4(), name: "Max", weight: "toy", bagWeight: "15"},
-        {id: uuidV4(), name: "Sassy", weight: "medium", bagWeight: "36"},
-      ]
-    });
-  }
+  // componentWillMount = () => {
+  //   this.setState({
+  //     dogs: [
+  //       ...this.state.dogs,
+  //       {id: uuidV4(), name: "Max", weight: "toy", bagWeight: "15"},
+  //       {id: uuidV4(), name: "Sassy", weight: "medium", bagWeight: "36"},
+  //     ]
+  //   });
+  // }
 
   addDog = (dog) => {
     this.setState({
