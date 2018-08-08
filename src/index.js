@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
+
 import './index.css';
 import App from './App';
+import rootReducer from './Reducers/Root';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom';
+
 
 const composeEnhancers = composeWithDevTools({});
 const store = createStore(
@@ -15,8 +18,10 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root'));
 registerServiceWorker();
