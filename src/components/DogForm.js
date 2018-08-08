@@ -13,7 +13,7 @@ export default class DogForm extends Component {
     this.state = this.initialState;
   }
 
-  ComponentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { id, name, weight, bagWeight } = nextProps.dog;
 
     if(id && this.props.editing !== nextProps.editing) {

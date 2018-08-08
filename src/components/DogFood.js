@@ -37,7 +37,7 @@ export default class DogFood extends Component {
   }
 
   findDog = (id) => {
-    return this.state.dogs.find((el) => el.id === id);
+    return this.state.dogs.find((element) => element.id === id);
   }
 
   render() {
@@ -47,7 +47,7 @@ export default class DogFood extends Component {
         <DogForm
           onSubmit={this.addDog.bind(this)}
           editing={this.state.editing}
-          dog={this.findDog(this.state.edigin)} />
+          dog={this.findDog(this.state.editing)} />
         <Dogs
           dogs={this.state.dogs}
           onEdit={this.editDog.bind(this)} />
