@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class DogForm extends Component {
+import * as actions from '../Actions/DogFoodActions';
+
+class DogForm extends Component {
   constructor(props) {
     super(props);
 
@@ -34,7 +38,7 @@ export default class DogForm extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.actions.createDogFood(this.state);
     this.setState(this.initialState);
   }
 
@@ -73,3 +77,9 @@ export default class DogForm extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return { actions: bindActionCreators(actions, dispatch)};
+}
+
+export default connect(null, mapDispatchToProps)(DogForm);
