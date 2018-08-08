@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DogForm from './DogForm';
 import Dogs from './Dogs';
 import uuidV4 from 'uuid/v4';
-import { Route, Switch } from 'react-router-dom';
+//import { Route, Switch } from 'react-router-dom';
 
 export default class DogFood extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ export default class DogFood extends Component {
 
     this.state = {
       dogs: [],
+      editing: null,
     }
   }
 
@@ -17,6 +18,8 @@ export default class DogFood extends Component {
     this.setState({
       dogs: [
         ...this.state.dogs,
+        {id: uuidV4(), name: "Max", weight: "toy", bagWeight: "15"},
+        {id: uuidV4(), name: "Sassy", weight: "medium", bagWeight: "36"},
       ]
     });
   }
@@ -27,22 +30,27 @@ export default class DogFood extends Component {
     })
   }
 
+  editDog = (id) => {
+    this.setState({
+      editing: id,
+    })
+  }
+
+  findDog = (id) => {
+    return this.state.dogs.find((el) => el.id === id);
+  }
+
   render() {
     return (
       <div>
         <h1>Puppy Chow App</h1>
-        <Switch>
-          <Route
-            path="/dogs/new"
-            render={(props) => (
-              <DogForm onSubmit={this.addDog.bind(this)} />
-            )} />
-          <Route
-            path="/dogs"
-            render={(props) => (
-              <Dogs dogs={this.state.dogs} />
-            )} />
-        </Switch>
+        <DogForm
+          onSubmit={this.addDog.bind(this)}
+          editing={this.state.editing}
+          dog={this.findDog(this.state.edigin)} />
+        <Dogs
+          dogs={this.state.dogs}
+          onEdit={this.editDog.bind(this)} />
       </div>
     );
   }

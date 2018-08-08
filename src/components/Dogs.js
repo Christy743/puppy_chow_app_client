@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 export default class Dogs extends Component {
+  handleOnClick = (id, event) => {
+    this.props.onEdit(id);
+  }
 
   render() {
     const { dogs } = this.props;
@@ -9,6 +12,9 @@ export default class Dogs extends Component {
       return (
         <li key={index}>
           {dog.name} - {dog.weight} - {dog.bagWeight}
+          <button onClick={(event) => this.handleOnClick(dog.id, event)} >
+            Edit Dog
+          </button>
         </li>
       );
     });
