@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as actions from '../Actions/DogFoodActions';
+import * as actions from '../Actions/DogActions';
 
 class DogForm extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class DogForm extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    this.props.actions.createDogFood(this.state);
+    this.props.actions.createDog(this.state);
     this.setState(this.initialState);
   }
 
